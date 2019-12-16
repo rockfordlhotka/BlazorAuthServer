@@ -1,3 +1,3 @@
-# BlazorAuthClient
+# BlazorAuthServer
 
 Sample from Using CSLA: Blazor and CSLA .NET book
