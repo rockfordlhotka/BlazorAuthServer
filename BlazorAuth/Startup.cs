@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using BlazorAuth.Data;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using System.Security.Claims;
 
 namespace BlazorAuth
 {
@@ -34,6 +35,14 @@ namespace BlazorAuth
         options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
       })
         .AddCookie();
+
+      services.AddAuthorization(config =>
+      {
+        config.AddPolicy("IsAuthenticated", policy => policy.RequireAuthenticatedUser());
+        config.AddPolicy("IsAdmin", policy => policy.RequireRole("admin", "supervisor", "manager"));
+        config.AddPolicy("SpainOnly", policy => policy.RequireClaim(ClaimTypes.Country, "es"));
+      });
+
       services.AddRazorPages();
       services.AddServerSideBlazor();
       services.AddSingleton<WeatherForecastService>();

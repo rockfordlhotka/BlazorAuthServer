@@ -42,6 +42,7 @@ namespace BlazorAuth.Account.Pages
         {
           var identity = new ClaimsIdentity("password");
           identity.AddClaim(new Claim(ClaimTypes.Name, Username.ToLower()));
+          identity.AddClaim(new Claim(ClaimTypes.Role, "admin"));
           var principal = new ClaimsPrincipal(identity);
           var authProperties = new AuthenticationProperties();
           await HttpContext.SignInAsync(
