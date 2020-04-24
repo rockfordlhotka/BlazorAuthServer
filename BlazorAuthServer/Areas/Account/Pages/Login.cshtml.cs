@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace BlazorAuth.Account.Pages
+namespace BlazorAuthServer.Account.Pages
 {
   [AllowAnonymous]
   public class LoginModel : PageModel
